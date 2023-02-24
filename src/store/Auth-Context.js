@@ -19,9 +19,16 @@ export const AuthContextProvider = (props) => {
   const [token,settoken]=useState(intialtoken)
   const isloggedinboolean=!!token
 
+
+  
+
   function loginhandler(token){
     settoken(token)
     localStorage.setItem("token",token)
+    setTimeout(()=>{
+      logouthandler()
+    
+      },15000)
   }
   function logouthandler(){
     settoken(null)
