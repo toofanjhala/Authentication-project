@@ -1,4 +1,5 @@
 import React ,{useState}from 'react'
+import { useHistory } from 'react-router-dom'
 
 
 const Authcontext=React.createContext({
@@ -10,6 +11,8 @@ const Authcontext=React.createContext({
 
 export const AuthContextProvider = (props) => {
 
+  const history=useHistory()
+
   const [token,settoken]=useState(null)
 
   const isloggedinboolean=!!token
@@ -19,6 +22,8 @@ export const AuthContextProvider = (props) => {
   }
   function logouthandler(){
     settoken(null)
+    history.replace("/auth")
+
   }
 
   const contextValue={
